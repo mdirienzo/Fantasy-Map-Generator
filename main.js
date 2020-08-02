@@ -114,7 +114,7 @@ const lineGen = d3.line().curve(d3.curveBasis); // d3 line generator with defaul
 
 // d3 zoom behavior
 let scale = 1, viewX = 0, viewY = 0;
-const zoom = d3.zoom().scaleExtent([1, 20]).on("zoom", zoomed);
+const zoom = d3.zoom().scaleExtent([1, 20]);//.on("zoom", zoomed);
 
 // default options
 let options = {pinNotes:false}; // options object

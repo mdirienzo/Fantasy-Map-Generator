@@ -335,6 +335,27 @@ document.addEventListener("keydown", event => {
   if ([112, 113, 117, 120, 9].includes(event.keyCode)) event.preventDefault(); // F1, F2, F6, F9, Tab
 });
 
+document.getElementById('viewbox').onwheel = handleWheelEvent;
+
+function handleWheelEvent(event) {
+  event.preventDefault();
+  // console.log(event);
+  const amount = event.deltaY > 0 ? 0.8 : 1.2;
+  newZoom(amount);
+}
+
+let currentZoom = 1;
+const zoomElement = document.getElementById('viewTwo')
+
+function newZoom(changeAmount) {
+  let zoomAmount = currentZoom;
+  zoomAmount *= changeAmount;
+  zoomAmount = zoomAmount < 1 ? 1 : zoomAmount;
+  zoomAmount = zoomAmount.toFixed(2);
+  currentZoom = zoomAmount;
+  zoomElement.style.setProperty("transform", "scale(" + currentZoom +")");
+}
+
 // Hotkeys, see github.com/Azgaar/Fantasy-Map-Generator/wiki/Hotkeys
 document.addEventListener("keyup", event => {
   if (!window.closeDialogs) return; // not all modules are loaded
